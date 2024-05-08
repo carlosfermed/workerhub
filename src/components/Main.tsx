@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
-import TitleMenu from "./TitleMenu"
+import { useEffect, useState } from "react";
+import TitleMenu from "./TitleMenu";
+import axios from "axios";
 
 interface User {
     id: number;
@@ -8,21 +9,21 @@ interface User {
     role_name: string;
 }
 
-interface Response<TipoDeDato> { 
-    status: number, 
-    data: { 
-        data: TipoDeDato[], 
-        page: number, 
-        nextPage: number | null, 
-        totalRecords: number, 
-        totalPages: number, 
-        totalWithoutFilter: number 
-    } 
+interface Response<TipoDeDato> {
+    status: number,
+    data: {
+        data: TipoDeDato[],
+        page: number,
+        nextPage: number | null,
+        totalRecords: number,
+        totalPages: number,
+        totalWithoutFilter: number
+    }
 }
 
 const Main = () => {
 
-    const [userArray, setUserArray] = useState<Response<User[]>>({
+    const [userResponse, setUserResponse] = useState<Response<User[]>>({
         status: 0,
         data: {
             data: [],
@@ -34,20 +35,40 @@ const Main = () => {
         }
     });
 
-
     useEffect(() => {
-        fetchData()
+        fetchData();
     }, [])
 
     const fetchData = () => {
-        fetch("https://dev.justnetsystems.com/pruebareact/api/users")
-            .then(response => response.json())
-            .then((data: Response<User[]>) => {
-                setUserArray(data);
-                console.log(userArray.data.data[0]); // Acceder a los datos aquí dentro
+        axios.get<Response<User[]>>("https://dev.justnetsystems.com/pruebareact/api/users")
+            .then(response => {
+                setUserResponse(response.data);
+                console.log(userResponse.data.data); 
             })
-            .catch(err => console.log(err))
-    }
+            .catch(err => console.log(err));
+    };
+
+    const generarFilas = () => {
+
+        const usuarios = userResponse.data.data.flat();
+
+        return usuarios.map((user: User) => {
+            
+            const nombreCompleto = user.name;
+            const partesNombre = nombreCompleto.split(' ');
+            const nombre = partesNombre[0];
+            const apellidos = partesNombre[1];
+    
+            return (
+                <tr key={user.id}>
+                    <td>{nombre}</td>
+                    <td>{apellidos}</td>
+                    <td>{user.role_name}</td>
+                    <td><a href={`/details/${user.id}`}>Ver detalles</a></td>
+                </tr>
+            );
+        });
+    };
 
     return (
         <>
@@ -61,9 +82,7 @@ const Main = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Laura</td><td>Gutierrez</td><td>Admin</td><td><a href="/details">Ver detalles</a></td>{/*  href="/details/:id"  */}
-                        </tr>
+                        {generarFilas()}
                     </tbody>
                 </table>
             </div>
