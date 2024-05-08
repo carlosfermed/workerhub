@@ -1,24 +1,18 @@
-import { useState } from 'react'
-import logo from './assets/logo-acme.jpg'
-import Main from './components/Main'
+// import { useState } from 'react'
 import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './routes/Home'
+import Details from './routes/Details'
 
 function App() {
-    const [count, setCount] = useState(0)
 
     return (
-        <>
-            <div className="imagen">
-                <img src={logo} alt="Logo Acme" />
-            </div>
-            <div className="menu">
-                <ul>
-                    <li></li>
-                    <li><a href="#">Usuarios</a></li>
-                </ul>
-            </div>
-            <Main />
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/details" element={<Details />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
