@@ -1,5 +1,5 @@
-import logo from '../assets/logo-acme.jpg'
-import userImage from '../assets/user-image.jpg'
+import logo from '../assets/logo-acme.jpg';
+import userImage from '../assets/user-image.jpg';
 
 
 const TitleMenu = () => {

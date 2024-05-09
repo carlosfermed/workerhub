@@ -1,5 +1,5 @@
-import { Link, useParams } from 'react-router-dom'
-import TitleMenu from "./TitleMenu"
+import { Link, useParams } from 'react-router-dom';
+import TitleMenu from "./TitleMenu";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -20,11 +20,9 @@ interface Response<TipoDeDato> {
     } 
 }
 
-
-
 const DetailsPanel = () => {
 
-    const { userId } = useParams(); // Obtener el ID del usuario de los parámetros de la URL
+    const { userId } = useParams(); 
     const [userData, setUserData] = useState({
         nombre: '',
         apellido: '',
@@ -33,7 +31,7 @@ const DetailsPanel = () => {
 
     useEffect(() => {
         fetchData();
-    }, [userId]); // Volver a cargar los datos cuando cambie el ID del usuario
+    }, []); 
 
     const fetchData = () => {
         console.log(userId);
@@ -41,8 +39,8 @@ const DetailsPanel = () => {
             .then(response => {
                 const userData = response.data.data.data;
                 if (userData) {
-                    const { email, name, role_id, id } = userData;
-                    const [nombre, apellido] = name.split(' ');     
+                    const { name, role_id } = userData;
+                    const [nombre, apellido] = name.split(' '); // Se usa desestructuración para almacenar los datos a diferencia del método usado en Main.tsx
                     setUserData({
                         nombre,
                         apellido,
