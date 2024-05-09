@@ -50,7 +50,7 @@ const Main = () => {
 
     const generarFilas = () => {
 
-        const usuarios = userResponse.data.data.flat();
+        const usuarios = userResponse.data.data.flat(); // https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
 
         return usuarios.map((user: User) => {
             

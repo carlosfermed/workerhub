@@ -60,3 +60,40 @@ th {
 td {
     background-color: white;
 }
+
+.botonVolverAtras {
+    width: 80px;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: black;
+    text-decoration: none;
+    font-weight: bolder;
+    color: white;
+    cursor: pointer;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type='text'] {
+    height: 33px;
+    width: 210px;
+}
+
+.botonSave {
+    height: 40px;
+    width: 218px;
+    background-color: rgb(50,50,50);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+form {
+    border: 1px solid lightgrey;
+    padding: 40px;
+    width: 50%;
+    border-radius: 10px;
+    background-color: white;
+}
