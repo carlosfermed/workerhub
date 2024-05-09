@@ -1,4 +1,5 @@
 import logo from '../assets/logo-acme.jpg'
+import userImage from '../assets/user-image.jpg'
 
 
 const TitleMenu = () => {
@@ -10,7 +11,7 @@ const TitleMenu = () => {
             <div className="menu">
                 <ul>
                     <li></li>
-                    <li><a href="#">Usuarios</a></li>
+                    <li><img src={userImage} alt="user image" className='userImage'/><a href="#">Usuarios</a></li>
                 </ul>
             </div>
         </>
