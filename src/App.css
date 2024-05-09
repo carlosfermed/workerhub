@@ -102,3 +102,9 @@ form {
     height: 25px;
     float: left;
 }
+
+.botonNavegacion {
+    margin: 25px;
+    background-color: rgb(247,201,64);
+    color: black;
+}
