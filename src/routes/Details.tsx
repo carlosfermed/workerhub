@@ -3,10 +3,10 @@ import DetailsPanel from '../components/DetailsPanel'
 
 const Details = () => {
     return (
-      <div>
-        <DetailsPanel />
-      </div>
+        <div>
+            <DetailsPanel />
+        </div>
     )
-  }
-  
-  export default Details
+}
+
+export default Details

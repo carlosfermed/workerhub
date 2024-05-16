@@ -37,7 +37,7 @@ const DetailsPanel = () => {
     }, []); 
 
     const fetchData = (id: number) => {
-        axios.get<Response<User>>(`https://dev.justnetsystems.com/pruebareact/api/users/${id}`)
+        axios.get<Response<User>>(`https://dev.apidedesarrollo.com/api/users/${id}`)
             .then(response => {
                 const userData = response.data.data.data;
                 if (userData) {

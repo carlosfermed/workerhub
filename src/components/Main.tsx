@@ -40,7 +40,7 @@ const Main = () => {
     }, [])
 
     const fetchData = () => {
-        axios.get<Response<User[]>>("https://dev.justnetsystems.com/pruebareact/api/users")
+        axios.get<Response<User[]>>("https://dev.apidedesarrollo.com/api/users/")
             .then(response => {
                 setUserResponse(response.data);
                 console.log(userResponse.data.data); 

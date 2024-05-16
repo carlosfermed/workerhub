@@ -3,10 +3,10 @@ import Main from '../components/Main'
 
 const Home = () => {
     return (
-      <div>
-        <Main />
-      </div>
+        <div>
+            <Main />
+        </div>
     )
-  }
-  
-  export default Home
+}
+
+export default Home
